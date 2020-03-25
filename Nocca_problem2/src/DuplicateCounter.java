@@ -48,9 +48,9 @@ public class DuplicateCounter {
 
 
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("The file you specified was not found in the path provided");
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("The text file provided was not able to be read by the program");
         }
 
     }
@@ -65,9 +65,9 @@ public class DuplicateCounter {
 
 
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("The file you specified was not found in the path provided");
         }catch (Exception e){
-            e.printStackTrace();
+            System.out.println("The new file path was not able to be determined");
         }
 
     }

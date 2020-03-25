@@ -5,9 +5,9 @@ public class Application {
         String outputFile = "text_files/unique_words.txt";
 
 
-        DuplicateRemover me = new DuplicateRemover();
-        me.remove(dataFile);
-        me.write(outputFile);
+        DuplicateRemover duplicateRemover = new DuplicateRemover();
+        duplicateRemover.remove(dataFile);
+        duplicateRemover.write(outputFile);
     }
 
 }

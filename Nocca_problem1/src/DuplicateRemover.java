@@ -7,7 +7,7 @@ import java.io.FileNotFoundException;
 public class DuplicateRemover {
     public int placeHolder = 0;
     public ArrayList<String> uniqueWords = new ArrayList<String>();
-    int c =0;
+    int c = 0;
     int[][] lineWordLength = new int[100][100];
 
     public DuplicateRemover() {
@@ -45,7 +45,7 @@ public class DuplicateRemover {
                             uniqueWords.remove(k);
                             k--;
                         }
-                    lineWordLength[c][c] = k;
+                        lineWordLength[c][c] = k;
                     }
                 }
                 c++;
@@ -54,36 +54,35 @@ public class DuplicateRemover {
 
             //need to change catches
         } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
+            System.out.println("The file you specified was not found in the path provided");
+        } catch (Exception e) {
+            System.out.println("The text file provided was not able to be read by the program");
         }
-        catch (Exception e){
-            e.printStackTrace();
-        }
+
     }
 
     public void write(String outputFile) {
 
-        try{
-        FileWriter writer = new FileWriter(outputFile);
+        try {
+            FileWriter writer = new FileWriter(outputFile);
 
-        for (int f = 0; f<c;f++){
-                for (int j = placeHolder; j<=lineWordLength[f][f];j++){
+            for (int f = 0; f < c; f++) {
+                for (int j = placeHolder; j <= lineWordLength[f][f]; j++) {
                     writer.write(uniqueWords.get(j) + " ");
                 }
-            if(placeHolder == 0) {
-                placeHolder = placeHolder + lineWordLength[f][f] + 1;
+                if (placeHolder == 0) {
+                    placeHolder = placeHolder + lineWordLength[f][f] + 1;
+                } else {
+                    placeHolder = placeHolder + lineWordLength[f][f];
+                }
+                writer.write("\n");
             }
-            else{
-                placeHolder = placeHolder + lineWordLength[f][f];
-            }
-            writer.write("\n");
-        }
             writer.close();
 
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (Exception e){
-            e.printStackTrace();
+            System.out.println("The file you specified was not found in the path provided");
+            } catch (Exception e){
+            System.out.println("The new file path was not able to be determined");
+            }
         }
     }
-}
